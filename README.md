@@ -20,7 +20,7 @@
 
 ## 專案結構
 
-```
+```text
 .
 ├── index.html       # 主要 HTML 檔案
 ├── style.css        # CSS 樣式表
@@ -34,21 +34,26 @@
 
 1. **初始化儲存庫**:
    在您的專案資料夾中開啟終端機或命令提示字元，然後執行：
+
    ```bash
    git init
    ```
 
 2. **將檔案新增到暫存區**:
    若要新增所有變更的檔案：
+
    ```bash
    git add .
    ```
+
    或者，若要新增特定檔案：
+
    ```bash
    git add index.html style.css script.js README.md
    ```
 
 3. **提交變更**:
+
    ```bash
    git commit -m "初始提交：建立基本的 Wi-Fi QR 碼產生器"
    ```
@@ -56,15 +61,18 @@
 4. **(選擇性) 連結到遠端儲存庫 (例如 GitHub)**:
    首先，在 GitHub 上建立一個新的儲存庫。
    然後，將您的本機儲存庫連結到遠端儲存庫：
+
    ```bash
    git remote add origin <您的 GitHub 儲存庫 URL>
    git branch -M main
    git push -u origin main
    ```
+
    將 `<您的 GitHub 儲存庫 URL>` 替換為您 GitHub 儲存庫的實際 URL。
 
 5. **推送後續變更**:
    在提交變更後，將其推送到遠端儲存庫：
+
    ```bash
    git push origin main
    ```
