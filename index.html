@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wi-Fi QR 碼產生器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wi-Fi QR 碼產生器</h1>
+        <form id="wifiForm">
+            <div class="form-group">
+                <label for="ssid">網路名稱 (SSID):</label>
+                <input type="text" id="ssid" name="ssid" required aria-required="true">
+            </div>
+
+            <div class="form-group">
+                <label for="password">密碼:</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <div class="form-group">
+                <input type="checkbox" id="hiddenSsid" name="hiddenSsid">
+                <label for="hiddenSsid">隱藏 SSID</label>
+            </div>
+
+            <fieldset class="form-group">
+                <legend>加密方式:</legend>
+                <div>
+                    <input type="radio" id="encNone" name="encryption" value="nopass" checked>
+                    <label for="encNone">無</label>
+                </div>
+                <div>
+                    <input type="radio" id="encWpa" name="encryption" value="WPA">
+                    <label for="encWpa">WPA/WPA2</label>
+                </div>
+                <div>
+                    <input type="radio" id="encWep" name="encryption" value="WEP">
+                    <label for="encWep">WEP</label>
+                </div>
+            </fieldset>
+
+            <div class="buttons">
+                <button type="button" id="generateBtn" aria-label="產生 QR 碼">產生 QR</button>
+                <button type="reset" id="resetBtn" aria-label="重設表單">重設</button>
+            </div>
+        </form>
+
+        <div id="qrcodeContainer">
+            <div id="qrcode" aria-live="polite" aria-label="產生的 QR 碼將會顯示在這裡"></div>
+            <p id="qrcodeString" class="qr-string" aria-live="polite"></p>
+        </div>
+    </div>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
