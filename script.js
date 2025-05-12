@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // WIFI:T:<encryption>;S:<ssid>;P:<password>;H:<hidden>;;
         const wifiString = `WIFI:T:${encryption};S:${ssid};P:${password};H:${hiddenSsid};;`;
 
-        qrcodeContainer.innerHTML = ''; // 清除之前的 QR 碼
+        qrcodeContainer.innerHTML = ''; // 清除之前的 QR-Code
         qrcodeStringDisplay.textContent = ''; // 清除之前的字串
 
         if (qrCodeInstance) {
-            qrCodeInstance.clear(); // 清除舊的 QR 碼實例
+            qrCodeInstance.clear(); // 清除舊的 QR-Code實例
         }
         qrCodeInstance = new QRCode(qrcodeContainer, {
             text: wifiString,
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             correctLevel: QRCode.CorrectLevel.H
         });
 
-        qrcodeContainer.setAttribute('aria-label', `Wi-Fi QR 碼，SSID 為 ${ssid}`);
+        qrcodeContainer.setAttribute('aria-label', `Wi-Fi QR-Code，SSID 為 ${ssid}`);
     });
 
     resetBtn.addEventListener('click', () => {
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (qrCodeInstance) {
             qrCodeInstance.clear();
         }
-        qrcodeContainer.setAttribute('aria-label', '產生的 QR 碼將會顯示在這裡');
+        qrcodeContainer.setAttribute('aria-label', '產生的 QR-Code將會顯示在這裡');
         document.getElementById('ssid').focus();
     });
 });
