@@ -14,12 +14,17 @@
         <form id="wifiForm">
             <div class="form-group">
                 <label for="ssid">網路名稱 (SSID):</label>
-                <input type="text" id="ssid" name="ssid" required aria-required="true">
+                <div style="position: relative; display: flex; align-items: center; width: 100%;">
+                    <input type="text" id="ssid" name="ssid" required aria-required="true" style="width: 100%; box-sizing: border-box; padding-right: 35px;">
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="password">密碼:</label>
-                <input type="password" id="password" name="password">
+                <div style="position: relative; display: flex; align-items: center; width: 100%;">
+                    <input type="password" id="password" name="password" style="width: 100%; box-sizing: border-box; padding-right: 35px;">
+                    <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">🙈</span>
+                </div>
             </div>
 
             <div class="form-group" style="display: flex; align-items: center;">

@@ -4,7 +4,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.getElementById('resetBtn');
     const qrcodeContainer = document.getElementById('qrcode');
     const qrcodeStringDisplay = document.getElementById('qrcodeString');
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
     let qrCodeInstance = null;
+
+    togglePassword.addEventListener('click', () => {
+        const currentType = passwordInput.getAttribute('type');
+        if (currentType === 'password') {
+            passwordInput.setAttribute('type', 'text');
+            togglePassword.textContent = '👁️'; // 密碼可見，顯示睜眼圖示
+        } else {
+            passwordInput.setAttribute('type', 'password');
+            togglePassword.textContent = '🙈'; // 密碼隱藏，顯示閉眼圖示
+        }
+    });
 
     generateBtn.addEventListener('click', () => {
         const ssid = document.getElementById('ssid').value;
