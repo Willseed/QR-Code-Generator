@@ -17,6 +17,7 @@
                 <div style="position: relative; display: flex; align-items: center; width: 100%;">
                     <input type="text" id="ssid" name="ssid" required aria-required="true" style="width: 100%; box-sizing: border-box; padding-right: 35px;">
                 </div>
+                <div id="ssidError" class="error-message"></div>
             </div>
 
             <div class="form-group">
@@ -25,6 +26,7 @@
                     <input type="password" id="password" name="password" style="width: 100%; box-sizing: border-box; padding-right: 35px;">
                     <span id="togglePassword" style="cursor: pointer; position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">🙈</span>
                 </div>
+                <div id="passwordError" class="error-message"></div>
             </div>
 
             <div class="form-group" style="display: flex; align-items: center;">
@@ -50,7 +52,7 @@
             </fieldset>
 
             <div class="buttons">
-                <button type="button" id="generateBtn" aria-label="產生 QR-Code">產生 QR-Code</button>
+                <button type="button" id="generateBtn" aria-label="產生 QR-Code" disabled>產生 QR-Code</button>
                 <button type="reset" id="resetBtn" aria-label="重設表單">重設</button>
             </div>
         </form>

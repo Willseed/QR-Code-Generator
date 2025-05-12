@@ -151,3 +151,9 @@ fieldset.form-group legend {
     outline: 2px solid #007acc;
     outline-offset: 2px;
 }
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 0.9em;
+    margin-top: 5px;
+}

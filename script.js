@@ -8,6 +8,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const togglePassword = document.getElementById('togglePassword');
     let qrCodeInstance = null;
 
+    const passwordError = document.getElementById('passwordError');
+
+    // 密碼驗證用正則式
+    const printablePattern = /^[\x20-\x7E]{8,63}$/;
+    const hex64Pattern = /^[A-Fa-f0-9]{64}$/;
+    const ascii5Or13Pattern = /^[\x20-\x7E]{5}$|^[\x20-\x7E]{13}$/;
+    const hex10Or26Pattern = /^[A-Fa-f0-9]{10}$|^[A-Fa-f0-9]{26}$/;
+
+    // 取得密碼錯誤訊息，無錯誤則回傳空字串
+    function getPasswordError(encryption, password) {
+        if (encryption === 'WPA') {
+            if (!printablePattern.test(password) && !hex64Pattern.test(password)) {
+                return 'WPA/WPA2 密碼需為 8–63 個可列印字元或 64 位元十六進位數。';
+            }
+        } else if (encryption === 'WEP') {
+            if (!ascii5Or13Pattern.test(password) && !hex10Or26Pattern.test(password)) {
+                return 'WEP 密碼需為 5 或 13 個 ASCII 字元，或 10 或 26 位元十六進位數。';
+            }
+        }
+        return '';
+    }
+
+    function validateForm() {
+        let valid = true;
+        const encryption = document.querySelector('input[name="encryption"]:checked').value;
+        const password = passwordInput.value;
+
+        if (encryption === 'nopass') {
+            passwordInput.disabled = true;
+            passwordInput.value = '';
+            passwordError.textContent = '';
+        } else {
+            passwordInput.disabled = false;
+            const errMsg = getPasswordError(encryption, password);
+            if (errMsg) {
+                passwordError.textContent = errMsg;
+                valid = false;
+            } else {
+                passwordError.textContent = '';
+            }
+        }
+
+        generateBtn.disabled = !valid;
+    }
+
+    // 監聽欄位變動
+    passwordInput.addEventListener('input', validateForm);
+    document.querySelectorAll('input[name="encryption"]').forEach(radio => {
+        radio.addEventListener('change', validateForm);
+    });
+
+    // 頁面載入時執行一次驗證
+    validateForm();
+
     togglePassword.addEventListener('click', () => {
         const currentType = passwordInput.getAttribute('type');
         if (currentType === 'password') {
@@ -61,7 +115,4 @@ document.addEventListener('DOMContentLoaded', () => {
         qrcodeContainer.setAttribute('aria-label', '產生的 QR 碼將會顯示在這裡');
         document.getElementById('ssid').focus();
     });
-
-    // 初始焦點設定
-    document.getElementById('ssid').focus();
 });
