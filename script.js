@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function getPasswordError(encryption, password) {
         if (encryption === 'WPA') {
             if (!printablePattern.test(password) && !hex64Pattern.test(password)) {
-                return 'WPA/WPA2 密碼需為 8–63 個可列印字元或 64 位元十六進位數。';
+                return 'WPA/WPA2 密碼必須是 8 到 63 個英數字元，或剛好 64 位的十六進位字串';
             }
         } else if (encryption === 'WEP') {
             if (!ascii5Or13Pattern.test(password) && !hex10Or26Pattern.test(password)) {
-                return 'WEP 密碼需為 5 或 13 個 ASCII 字元，或 10 或 26 位元十六進位數。';
+                return 'WEP 密碼必須是 5 或 13 個英數字元，或剛好 10 或 26 位的十六進位字串';
             }
         }
         return '';
@@ -32,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function validateForm() {
         let valid = true;
+        const ssid = document.getElementById('ssid').value.trim();
+        // SSID 空值時不顯示訊息，但停用按鈕
+        if (!ssid) {
+            valid = false;
+        }
         const encryption = document.querySelector('input[name="encryption"]:checked').value;
         const password = passwordInput.value;
 
@@ -81,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!ssid) {
             alert('請輸入 SSID (網路名稱)。');
+            generateBtn.disabled = true;  // SSID 空白時停用按鈕
             return;
         }
 
