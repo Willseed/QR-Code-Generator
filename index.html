@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wi-Fi QR-Code 產生器</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <h1>Wi-Fi QR-Code 產生器</h1>
@@ -28,7 +30,8 @@
             <fieldset class="form-group">
                 <legend>加密方式:</legend>
                 <div style="display: flex; align-items: center; margin-bottom: 5px;">
-                    <input type="radio" id="encNone" name="encryption" value="nopass" checked style="margin-right: 5px;">
+                    <input type="radio" id="encNone" name="encryption" value="nopass" checked
+                        style="margin-right: 5px;">
                     <label for="encNone">無</label>
                 </div>
                 <div style="display: flex; align-items: center; margin-bottom: 5px;">
@@ -48,10 +51,12 @@
         </form>
 
         <div id="qrcodeContainer">
-            <div id="qrcode" aria-live="polite" aria-label="產生的 QR-Code 將會顯示在這裡"></div>
+            <div id="qrcode" aria-live="polite" aria-label="產生的 QR-Code將會顯示在這裡"></div>
+            <p id="qrcodeString" class="qr-string" aria-live="polite"></p>
         </div>
     </div>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

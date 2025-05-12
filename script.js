@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
             correctLevel: QRCode.CorrectLevel.H
         });
 
-        qrcodeStringDisplay.textContent = `QR 碼字串: ${wifiString}`;
         qrcodeContainer.setAttribute('aria-label', `Wi-Fi QR 碼，SSID 為 ${ssid}`);
     });
 
